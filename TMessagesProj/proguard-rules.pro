@@ -6,6 +6,17 @@
 -keep class org.webrtc.* { *; }
 -keep class org.webrtc.audio.* { *; }
 -keep class org.webrtc.voiceengine.* { *; }
+-keep class org.telegram.messenger.* { *; }
+-keep class org.telegram.messenger.camera.* { *; }
+-keep class org.telegram.messenger.secretmedia.* { *; }
+-keep class org.telegram.messenger.support.* { *; }
+-keep class org.telegram.messenger.support.* { *; }
+-keep class org.telegram.messenger.time.* { *; }
+-keep class org.telegram.messenger.video.* { *; }
+-keep class org.telegram.messenger.voip.* { *; }
+-keep class org.telegram.SQLite.** { *; }
+-keep class org.telegram.tgnet.ConnectionsManager { *; }
+-keep class org.telegram.tgnet.NativeByteBuffer { *; }
 -keep class org.telegram.tgnet.RequestDelegateInternal { *; }
 -keep class org.telegram.tgnet.RequestTimeDelegate { *; }
 -keep class org.telegram.tgnet.RequestDelegate { *; }
@@ -143,40 +154,6 @@
 }
 
 
-# Keep `Companion` object fields of serializable classes.
-# This avoids serializer lookup through `getDeclaredClasses` as done for named companion objects.
--if @kotlinx.serialization.Serializable class **
--keepclassmembers class <1> {
-   static <1>$Companion Companion;
-}
-
-# Keep `serializer()` on companion objects (both default and named) of serializable classes.
--if @kotlinx.serialization.Serializable class ** {
-   static **$* *;
-}
--keepclassmembers class <2>$<3> {
-   kotlinx.serialization.KSerializer serializer(...);
-}
-
-# Keep `INSTANCE.serializer()` of serializable objects.
--if @kotlinx.serialization.Serializable class ** {
-   public static ** INSTANCE;
-}
--keepclassmembers class <1> {
-   public static <1> INSTANCE;
-   kotlinx.serialization.KSerializer serializer(...);
-}
-
-# @Serializable and @Polymorphic are used at runtime for polymorphic serialization.
--keepattributes RuntimeVisibleAnnotations,AnnotationDefault
-
--dontwarn org.jetbrains.annotations.NotNull
--dontwarn org.jetbrains.annotations.Nullable
-
--allowaccessmodification
--overloadaggressively
--keepattributes SourceFile,LineNumberTable,LocalVariableTable
--renamesourcefileattribute SourceFile
--obfuscationdictionary          proguard-dic.txt
--classobfuscationdictionary     proguard-dic.txt
--packageobfuscationdictionary   proguard-dic.txt
+# Use -keep to explicitly keep any other classes shrinking would remove
+-dontoptimize
+-dontobfuscate
