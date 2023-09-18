@@ -73,8 +73,12 @@ jobs:
       - name: Debug Build
         run: |
           echo -e "RELEASE_KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}\nRELEASE_KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}\nRELEASE_STORE_PASSWORD=${{ secrets.RELEASE_STORE_PASSWORD }}">>local.properties
-          find . -type d -name "nullgram" -not -path "*/.git/*" -execdir mv {} nullgramextra \; || true
-          find . -type f -not -path "./.git/*" -exec sed -i 's/top\.qwq2333\.nullgram/top.qwq2333.nullgramextra/g' {} +
+          # find . -type d -name "nullgram" -not -path "*/.git/*" -execdir mv {} nullgramextra \; || true
+          # find . -type f -not -path "./.git/*" -exec sed -i 's/top\.qwq2333\.nullgram/top.qwq2333.nullgramextra/g' {} +
+          find . -type d -name "top" -not -path "*/.git/*" -execdir mv {} xyz \; || true
+          find . -type d -name "qwq2333" -not -path "*/.git/*" -execdir mv {} nextalone \; || true
+          find . -type d -name "nullgram" -not -path "*/.git/*" -execdir mv {} nnngram \; || true
+          find . -type f -not -path "./.git/*" -exec sed -i 's/top\.qwq2333\.nullgram/xyz.nextalone.nnngram/g' {} +
           ./gradlew :TMessagesProj:assembleRelease
           echo "APK_FILE=$(find TMessagesProj/build/outputs/apk -name '*arm64*.apk')" >> $GITHUB_ENV
           echo "APK_FILE_ARMV7=$(find TMessagesProj/build/outputs/apk -name '*arm32*.apk')" >> $GITHUB_ENV

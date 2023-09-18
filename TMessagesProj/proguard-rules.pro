@@ -30,6 +30,74 @@
 
 -keep public class * extends java.lang.Exception
 
+-keepnames class org.telegram.tgnet.TLRPC$TL_* {}
+
+-dontwarn org.dizitart.no2.**  
+-dontwarn org.slf4j.** 
+-dontwarn org.h2.** 
+-dontwarn org.objenesis.** 
+-dontwarn com.fasterxml.jackson.** 
+-dontwarn org.springframework.** 
+-dontwarn org.thymeleaf.** 
+-dontwarn org.tinylog.** 
+-dontwarn org.wltea.** 
+-dontwarn org.yaml.** 
+-dontwarn oshi.** 
+-dontwarn redis.clients.** 
+-dontwarn retrofit2.** 
+-dontwarn springfox.documentation.spring.web.json.Json
+
+-dontwarn ch.ethz.** 
+-dontwarn cn.beecp.** 
+-dontwarn com.alibaba.** 
+-dontwarn com.chenlb.** 
+-dontwarn com.github.houbb.** 
+-dontwarn com.github.promeg.** 
+-dontwarn com.github.stuxuhai.** 
+-dontwarn com.google.common.** 
+-dontwarn com.google.zxing.** 
+-dontwarn com.googlecode.** 
+-dontwarn com.hankcs.** 
+-dontwarn com.jcraft.** 
+-dontwarn com.jfinal.** 
+-dontwarn com.jfirer.** 
+-dontwarn com.mayabot.** 
+-dontwarn com.mchange.** 
+-dontwarn com.mongodb.** 
+-dontwarn com.rnkrsoft.** 
+-dontwarn com.rnkrsoft.bopomofo4j.ToneType
+-dontwarn com.sun.net.** 
+-dontwarn com.vdurmont.** 
+-dontwarn com.zaxxer.** 
+-dontwarn freemarker.** 
+-dontwarn io.github.logtube.** 
+-dontwarn java.awt.** 
+-dontwarn java.beans.** 
+-dontwarn java.lang.management.ClassLoadingMXBean
+-dontwarn javax.** 
+-dontwarn net.sf.** 
+-dontwarn net.sourceforge.** 
+-dontwarn okhttp3.** 
+-dontwarn org.ansj.** 
+-dontwarn org.apache.** 
+-dontwarn org.apdplat.** 
+-dontwarn org.beetl.** 
+-dontwarn org.bouncycastle.** 
+-dontwarn org.febit.** 
+-dontwarn org.glassfish.** 
+-dontwarn org.javamoney.** 
+-dontwarn org.jboss.** 
+-dontwarn org.jboss.** 
+-dontwarn org.joda.** 
+-dontwarn org.lionsoul.** 
+-dontwarn org.mozilla.** 
+-dontwarn org.mvel2.** 
+-dontwarn org.ofdrw.** 
+-dontwarn org.openxmlformats.** 
+-dontwarn org.pmw.tinylog.** 
+-dontwarn org.rythmengine.** 
+-dontwarn org.slf4j.** 
+
 -dontwarn org.bouncycastle.jsse.*
 -dontwarn org.bouncycastle.jsse.provider.BouncyCastleJsseProvider
 -dontwarn org.conscrypt.*
@@ -153,6 +221,9 @@
     public static *** d(...);
 }
 
+# Don't warn about checkerframework and Kotlin annotations
+-dontwarn org.checkerframework.**
+-dontwarn javax.annotation.**
 
 # Use -keep to explicitly keep any other classes shrinking would remove
 -dontoptimize
